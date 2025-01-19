@@ -1,0 +1,1 @@
+button{padding:10px;border:none;border-radius:10%}input{margin-top:25px}button:disabled{cursor:not-allowed}.timer{margin-top:10px;display:flex;gap:15px;text-align:center}.field{display:flex;flex-direction:column}span{font-weight:700}.back-link{position:absolute;top:1px;padding:2px;font-size:10px;background-color:#639;border-radius:10%;color:#fff}
