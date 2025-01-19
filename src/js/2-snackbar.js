@@ -2,7 +2,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 
-const form = document.querySelector(".form")
+const form = document.querySelector("form")
 
 const clearForm = () => {
     form.reset()    
@@ -20,30 +20,36 @@ const onFormSubmit = (e) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (data.radio === "fulfilled") {
-                    resolve(iziToast.show({
-                        message: `✅ Fulfilled promise in ${data.input}ms`,
-                        messageColor: 'white',
-                        position: 'topRight',
-                        backgroundColor: 'green',
-                        close: false,
-                        progressBar: false,
-                    }))
+                    resolve(`✅ Fulfilled promise in ${data.input}ms`)
                 }
                 else {
-                    reject(iziToast.show({
-                        message: `❌ Rejected promise in ${data.input}ms`,
-                        messageColor: 'white',
-                        position: 'topRight',
-                        backgroundColor: '#f1807e',
-                        close: false,
-                        progressBar: false,
-                    }))
+                    reject(`❌ Rejected promise in ${data.input}ms`)
                 }
             }, data.input)
         })
     }
     clearForm()
     makePromise()
+        .then((message) => {
+            iziToast.show({
+                message,
+                messageColor: 'white',
+                position: 'topRight',
+                backgroundColor: 'green',
+                close: false,
+                progressBar: false,
+            });
+        })
+        .catch((message) => {
+         iziToast.show({
+                message,
+                messageColor: 'white',
+                position: 'topRight',
+                backgroundColor: '#f1807e',
+                close: false,
+                progressBar: false,
+            });
+    })
 }
 
 
